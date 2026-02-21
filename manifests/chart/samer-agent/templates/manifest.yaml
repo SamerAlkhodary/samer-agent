@@ -1,0 +1,76 @@
+{{- template "common.configmap" (list . "samer-agent.configmap") -}}
+{{- define "samer-agent.configmap" -}}
+{{- end }}
+
+---
+{{ template "common.secret" (list . "samer-agent.secret") -}}
+{{- define "samer-agent.secret" -}}
+{{- end }}
+---
+
+{{ template "common.serviceaccount" (list . "samer-agent.serviceaccount" ) -}}
+{{- define "samer-agent.serviceaccount" -}}
+{{- end }}
+
+---
+{{ template "common.networkpolicy" (list . "samer-agent.networkpolicy") -}}
+{{- define "samer-agent.networkpolicy" -}}
+{{- end }}
+
+---
+{{ template "common.sealedsecret" (list . "samer-agent.sealedsecret") -}}
+{{- define "samer-agent.sealedsecret" -}}
+{{- end }}
+
+---
+
+{{ template "common.service" (list . "samer-agent.service") -}}
+{{- define "samer-agent.service" -}}
+{{- end }}
+
+---
+{{ template "common.deployment" (list . "samer-agent.deployment") -}}
+{{- define "samer-agent.deployment" -}}
+metadata:
+  name: {{ template "common.fullname" . }}
+  labels:
+    qlik.encryption: "true"
+  annotations:
+    qlik.encryption.service: '{ "serviceS2SName": "samer-agent", "serviceDisplayName": "samer-agent", "serviceEncryptionContext": "samer-agent" }'
+spec:
+  template:
+    spec:
+      containers:
+        -
+{{ include "common.container" (list (set . "container" .Values.deployment.container) "samer-agent.deployment.container") | indent 8 }}
+{{- end }}
+
+
+{{- define "samer-agent.deployment.container" -}}
+livenessProbe:
+  httpGet:
+    path: /health
+    port: http
+readinessProbe:
+  httpGet:
+    path: /ready
+    port: http
+ports:
+  - name: http
+    containerPort: {{ .Values.service.port }}
+    protocol: TCP
+{{- end }}
+---
+{{ template "common.keyrequest" (list . "samer-agent.keyrequest") -}}
+{{- define "samer-agent.keyrequest" -}}
+{{- end }}
+
+---
+{{ template "common.keyssecret" (list . "samer-agent.keyssecret") -}}
+{{- define "samer-agent.keyssecret" -}}
+{{- end }}
+
+---
+{{ template "common.hpa" (list . "samer-agent.hpa") -}}
+{{- define "samer-agent.hpa" -}}
+{{- end }}

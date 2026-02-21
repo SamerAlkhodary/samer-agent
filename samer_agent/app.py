@@ -7,11 +7,11 @@ from agent_sdk.context.extract_context import get_jwt
 from agent_sdk.messaging.tenant_purge import create_tenant_purge_handler
 from langchain_qlik.jwt import set_jwt_fetcher
 
-from {{template_agent}}.agent import get_analytics
+from samer_agent.agent import get_analytics
 
-SERVICE_NAME: Final = "{{template-agent}}"
-EVENT_SUBJECT: Final = "system-events.{{template-agent}}"
-EVENT_SOURCE: Final = "com.qlik/{{template-agent}}"
+SERVICE_NAME: Final = "samer-agent"
+EVENT_SUBJECT: Final = "system-events.samer-agent"
+EVENT_SOURCE: Final = "com.qlik/samer-agent"
 
 dotenv.load_dotenv()
 
@@ -23,7 +23,7 @@ def main():
     """
 
     config = ServiceConfig(
-        prefix="/v1/{{template-agent}}",
+        prefix="/v1/samer-agent",
         service_name=SERVICE_NAME,
         database_name=SERVICE_NAME,
         is_remote_agent=True,

@@ -6,4 +6,4 @@ fi
 
 namespace=analytics-ai
 
-kubectl exec deploy/{{template-agent}} -n $namespace -c service-kit-sidecar -- cat /var/run/secrets/qlik.com/{{template-agent}}-keys/service-key.yaml >"$KEYS_LOCATION"/service-key.yaml
+kubectl exec deploy/samer-agent -n $namespace -c service-kit-sidecar -- cat /var/run/secrets/qlik.com/samer-agent-keys/service-key.yaml >"$KEYS_LOCATION"/service-key.yaml

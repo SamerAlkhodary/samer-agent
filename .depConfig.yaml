@@ -1,4 +1,4 @@
 helmDepSpecs:
-    - manifests/chart/{{template-agent}}
+    - manifests/chart/samer-agent
 pythonDepSpecs:
     - requirements.txt

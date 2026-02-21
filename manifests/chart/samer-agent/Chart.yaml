@@ -1,14 +1,14 @@
 apiVersion: v2
 description: >
-  Helm chart for {{template-agent}}
+  Helm chart for samer-agent
   capabilities for the Qlik.
-name: {{template-agent}}
+name: samer-agent
 version: 0.1.1
 keywords:
-  - {{template-agent}}
+  - samer-agent
 home: https://www.qlik.com
 sources:
-  - https://github.com/qlik-trial/{{template-agent}}
+  - https://github.com/qlik-trial/samer-agent
 dependencies:
   - name: qlikcommon
     version: 3.26.2
