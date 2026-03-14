@@ -230,7 +230,7 @@ jobs:
           tag: "${{ needs.calculate_version.outputs.release_tag }}"
           github_token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Notify Slack
-        uses: slackapi/slack-github-action@v2
+        uses: slackapi/slack-github-action@v3
         with:
           method: chat.postMessage
           token: "${{ secrets.SLACK_ACCESS_TOKEN }}"
